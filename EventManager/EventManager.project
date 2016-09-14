@@ -5,6 +5,7 @@
   <VirtualDirectory Name="src">
     <File Name="main.cpp"/>
     <File Name="EventManager.h"/>
+    <File Name="EventManager.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Chris
-Date                   :=13/09/16
+Date                   :=14/09/16
 CodeLitePath           :="/home/chris/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/EventManager.cpp$(ObjectSuffix) 
 
 
 
@@ -98,6 +98,14 @@ $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
+
+$(IntermediateDirectory)/EventManager.cpp$(ObjectSuffix): EventManager.cpp $(IntermediateDirectory)/EventManager.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/chris/git-repos/Game-Mechanisms-SFML/EventManager/EventManager.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/EventManager.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/EventManager.cpp$(DependSuffix): EventManager.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/EventManager.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/EventManager.cpp$(DependSuffix) -MM "EventManager.cpp"
+
+$(IntermediateDirectory)/EventManager.cpp$(PreprocessSuffix): EventManager.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/EventManager.cpp$(PreprocessSuffix) "EventManager.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

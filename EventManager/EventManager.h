@@ -1,8 +1,12 @@
 #pragma once
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include <unordered_map>
 #include <functional>
-#include <vector>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 enum class EventType
 {
@@ -98,17 +102,17 @@ public:
 		m_callbacks.erase(l_name);
 	}
 	
-	void HandleEvent(sf::Event& l_event);
-	void Update();
+	void handleEvent(sf::Event& l_event);
+	void update();
 	
-	sf::Vector2i GetMousePos(sf::RenderWindow* l_wind = nullptr)
+	sf::Vector2i getMousePos(sf::RenderWindow* l_wind = nullptr)
 	{
 		return (l_wind ? sf::Mouse::getPosition(*l_wind)
 				: sf::Mouse::getPosition());
 	}
 	
 private:
-	void LoadBindings();
+	void loadBindings();
 	
 	Bindings m_bindings;
 	Callbacks m_callbacks;
