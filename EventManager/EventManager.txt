@@ -1,1 +1,1 @@
-./Debug/main.cpp.o ./Debug/EventManager.cpp.o
+./Debug/main.cpp.o ./Debug/EventManager.cpp.o ./Debug/Game.cpp.o ./Debug/Window.cpp.o

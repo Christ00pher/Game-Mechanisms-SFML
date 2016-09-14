@@ -1,4 +1,4 @@
-Debug/main.cpp.o: main.cpp Game.h Window.h \
+Debug/Game.cpp.o: Game.cpp Game.h Window.h \
  /home/chris/dev/sfml/SFML/include/SFML/Window.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/System.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Config.hpp \

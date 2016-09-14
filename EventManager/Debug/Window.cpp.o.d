@@ -1,4 +1,4 @@
-Debug/main.cpp.o: main.cpp Game.h Window.h \
+Debug/Window.cpp.o: Window.cpp Window.h \
  /home/chris/dev/sfml/SFML/include/SFML/Window.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/System.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Config.hpp \
@@ -70,8 +70,6 @@ Debug/main.cpp.o: main.cpp Game.h Window.h \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Glsl.inl \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Sprite.hpp \
  /home/chris/dev/sfml/SFML/include/SFML/Graphics/Text.hpp EventManager.h
-
-Game.h:
 
 Window.h:
 

@@ -1,8 +1,14 @@
-#include <stdio.h>
-#include "EventManager.h"
+#include "Game.h"
 
-int main(int argc, char **argv)
+int main()
 {
-	printf("hello world\n");
+	// Program entry point.
+	Game game;
+	while(!game.GetWindow()->IsDone())
+	{
+		game.Update();
+		game.Render();
+		game.RestartClock();
+	}
 	return 0;
 }
