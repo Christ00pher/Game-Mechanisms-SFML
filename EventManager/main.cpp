@@ -1,14 +1,13 @@
 #include "Game.h"
 
-int main()
-{
+int main(){
 	// Program entry point.
 	Game game;
-	while(!game.GetWindow()->IsDone())
-	{
+	while(!game.GetWindow()->IsDone()){
 		game.Update();
 		game.Render();
 		game.RestartClock();
 	}
+	
 	return 0;
 }

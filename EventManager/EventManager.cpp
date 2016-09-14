@@ -1,6 +1,6 @@
 #include "EventManager.h"
 
-EventManager::EventManager(): m_hasFocus(true){ loadBindings(); }
+EventManager::EventManager(): m_hasFocus(true){ LoadBindings(); }
 
 EventManager::~EventManager(){
 	for (auto &itr : m_bindings){
@@ -9,14 +9,16 @@ EventManager::~EventManager(){
 	}
 }
 
-bool EventManager::addBinding(Binding *l_binding){
+bool EventManager::AddBinding(Binding *l_binding){
+	if (l_binding == nullptr) return false;
+	
 	if (m_bindings.find(l_binding->m_name) != m_bindings.end())
 		return false;
-
+		
 	return m_bindings.emplace(l_binding->m_name, l_binding).second;
 }
 
-bool EventManager::removeBinding(std::string l_name){
+bool EventManager::RemoveBinding(std::string l_name){
 	auto itr = m_bindings.find(l_name);
 	if (itr == m_bindings.end()){ return false; }
 	delete itr->second;
@@ -24,9 +26,9 @@ bool EventManager::removeBinding(std::string l_name){
 	return true;
 }
 
-void EventManager::setFocus(const bool& l_focus){ m_hasFocus = l_focus; }
+void EventManager::SetFocus(const bool& l_focus){ m_hasFocus = l_focus; }
 
-void EventManager::handleEvent(sf::Event& l_event){
+void EventManager::HandleEvent(sf::Event& l_event){
 	// Handling SFML events.
 	for (auto &b_itr : m_bindings){
 		Binding* bind = b_itr.second;
@@ -71,7 +73,7 @@ void EventManager::handleEvent(sf::Event& l_event){
 	}
 }
 
-void EventManager::update(){
+void EventManager::Update(){
 	if (!m_hasFocus){ return; }
 	for (auto &b_itr : m_bindings){
 		Binding* bind = b_itr.second;
@@ -106,16 +108,17 @@ void EventManager::update(){
 			}
 		}
 		bind->c = 0;
-		bind->m_details.clear();
+		bind->m_details.Clear();
 	}
 }
 
-void EventManager::loadBindings(){
+void EventManager::LoadBindings(){
 	std::string delimiter = ":";
 
 	std::ifstream bindings;
-	bindings.open("keys.cfg");
+	bindings.open("keys.cfg.txt");
 	if (!bindings.is_open()){ std::cout << "! Failed loading keys.cfg." << std::endl; return; }
+	else std::cout << "keys.cfg was succesfully opened!" << std::endl;
 	std::string line;
 	while (std::getline(bindings, line)){
 		std::stringstream keystream(line);
@@ -134,10 +137,10 @@ void EventManager::loadBindings(){
 			EventInfo eventInfo;
 			eventInfo.m_code = code;
 
-			bind->bindEvent(type, eventInfo);
+			bind->BindEvent(type, eventInfo);
 		}
 
-		if (!addBinding(bind)){ delete bind; }
+		if (!AddBinding(bind)){ delete bind;  }
 		bind = nullptr;
 	}
 	bindings.close();
