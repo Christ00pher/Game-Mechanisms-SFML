@@ -4,4 +4,5 @@ TODO:
 
 - Sprite Manager
 - State Manager
+- Singleton
 - ...
